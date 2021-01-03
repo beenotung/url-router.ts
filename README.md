@@ -38,3 +38,6 @@ expect(match.hash).equals('#rhs')
 ```
 
 Details refer to [core.spec.ts](./src/core.spec.ts)
+
+## License
+[BSD-2-Clause](./LICENSE) (Free Open Sourced Project)
