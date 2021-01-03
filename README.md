@@ -1,18 +1,18 @@
-# router.ts
+# url-router.ts
 
 General Purpose, Isomorphic url based router.
 
-[![npm Package Version](https://img.shields.io/npm/v/router.ts.svg?maxAge=3600)](https://www.npmjs.com/package/router.ts)
+[![npm Package Version](https://img.shields.io/npm/v/url-router.ts.svg?maxAge=3600)](https://www.npmjs.com/package/url-router.ts)
 
 ## Installation
 ```bash
-npm install router.ts
+npm install url-router.ts
 ```
 
 ## Usage Example
 
 ```typescript
-import { Router, toQuery } from 'router.ts'
+import { Router, toQuery } from 'url-router.ts'
 import { expect } from 'chai'
 
 let router = new Router<any>()

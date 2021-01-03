@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "router.ts": "link:.."
+    "url-router.ts": "file:.."
   }
 }

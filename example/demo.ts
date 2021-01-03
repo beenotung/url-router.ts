@@ -1,4 +1,4 @@
-import { Router, toQuery } from 'router.ts'
+import { Router, toQuery } from 'url-router.ts'
 import { expect } from 'chai'
 
 let router = new Router<any>()
@@ -21,3 +21,5 @@ expect(query).deep.equals({
   q: 'url with hash and search query',
 })
 expect(match.hash).equals('#rhs')
+
+console.log('passed')
