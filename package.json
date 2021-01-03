@@ -66,6 +66,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com.beenotung/url-router.ts"
-  }
+    "url": "git+https://github.com/beenotung/url-router.ts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/beenotung/url-router.ts/issues"
+  },
+  "homepage": "https://github.com/beenotung/url-router.ts#readme"
 }
