@@ -1,17 +1,3 @@
-# router.ts
-
-General Purpose, Isomorphic url based router.
-
-[![npm Package Version](https://img.shields.io/npm/v/router.ts.svg?maxAge=3600)](https://www.npmjs.com/package/router.ts)
-
-## Installation
-```bash
-npm install router.ts
-```
-
-## Usage Example
-
-```typescript
 import { Router, toQuery } from 'router.ts'
 import { expect } from 'chai'
 
@@ -35,6 +21,3 @@ expect(query).deep.equals({
   q: 'url with hash and search query',
 })
 expect(match.hash).equals('#rhs')
-```
-
-Details refer to [core.spec.ts](./src/core.spec.ts)
