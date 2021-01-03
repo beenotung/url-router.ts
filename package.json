@@ -30,10 +30,8 @@
       "pre-commit": "npm run format"
     }
   },
-  "directories": {
-    "test": "test"
-  },
   "files": [
+    "src",
     "dist"
   ],
   "dependencies": {
