@@ -1,13 +1,14 @@
 {
   "name": "router.ts",
   "version": "0.2.0",
-  "description": "TODO: add desc",
-  "keywords": [],
-  "author": {
-    "name": "Beeno Tung",
-    "email": "aabbcc1241@yahoo.com.hk",
-    "url": "https://beeno-tung.surge.sh"
-  },
+  "description": "General Purpose, Isomorphic url based router.",
+  "keywords": [
+    "router",
+    "cross-platform",
+    "express-route",
+    "util"
+  ],
+  "author": "Beeno Tung <aabbcc1241@yahoo.com.hk> (https://beeno-tung.surge.sh)",
   "license": "BSD-2-Clause",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -32,6 +33,7 @@
   },
   "files": [
     "src",
+    "example",
     "dist"
   ],
   "dependencies": {
