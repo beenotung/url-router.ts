@@ -1,12 +1,15 @@
 {
   "name": "url-router.ts",
   "version": "0.2.3",
-  "description": "General Purpose, Isomorphic url based router.",
+  "description": "General Purpose, isomorphic url based router that works in node.js and browser without dependency",
   "keywords": [
     "router",
+    "url",
+    "isomorphic",
     "cross-platform",
     "express-route",
-    "util"
+    "util",
+    "SPA"
   ],
   "author": "Beeno Tung <aabbcc1241@yahoo.com.hk> (https://beeno-tung.surge.sh)",
   "license": "BSD-2-Clause",
