@@ -1,0 +1,28 @@
+#!/bin/bash
+set -e
+set -o pipefail
+
+dir="bundle"
+rm -rf "$dir"
+mkdir "$dir"
+
+cd src
+cat core.ts helpers.ts | sed 's/export //' > "../$dir/bundle.ts"
+
+cd "../$dir"
+tsc --target es3 bundle.ts
+
+echo ";var UrlRouter = (function(){
+" > index.js
+cat bundle.js >> index.js
+echo "
+var exports = Router;
+exports.Router = Router;
+exports.toQuery = toQuery;
+return exports;
+})();" >> index.js
+
+## check for duplicated names
+node index.js
+
+rm bundle.ts bundle.js

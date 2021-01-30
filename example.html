@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>url-router.ts demo</title>
+</head>
+<body>
+
+<!-- using CDN -->
+<script src="https://cdn.jsdelivr.net/npm/url-router.ts@0.3/bundle/index.min.js"></script>
+
+<!-- local test -->
+<script src="bundle/index.js"></script>
+
+<script>
+  let router = new UrlRouter();
+  router.add("/", Home);
+  router.add("/users/:uid", Profile);
+  router.add("/search", Search);
+
+  window.addEventListener("popstate", () => render(currentUrl()));
+  render(currentUrl());
+
+  function navBar() {
+    return `
+<div>
+    <button onclick="render('/')">Home</button>
+    <button onclick="render('/users/123')">Profile</button>
+    <button onclick="render('/404')">404</button>
+    <input id="search">
+    <button onclick="render('/search?q='+search.value.replace(/\ /g,'+')+'&t='+Date.now())">Search</button>
+</div>
+    `;
+  }
+
+  function Home() {
+    document.body.innerHTML = `
+    <h1>Home Page</h1>
+    ${navBar()}
+`;
+  }
+
+  function Profile(req) {
+    document.body.innerHTML = `
+    <h1>Profile Page</h1>
+    ${navBar()}
+    uid: ${req.params.uid}
+    `;
+  }
+
+  function Search(req) {
+    let query = UrlRouter.toQuery(req.search);
+    document.body.innerHTML = `
+    <h1>Search Page</h1>
+    ${navBar()}
+    search: ${req.search}
+    <br>
+    keywords: ${query.q}
+    <br>
+    timestamp: ${new Date(+query.t)}
+    `;
+  }
+
+  function NotFound(url) {
+    document.body.innerHTML = `
+    <h1>Page Not Found</h1>
+    ${navBar()}
+    url: ${url}
+`;
+  }
+
+  function currentUrl() {
+    return location.href.replace(location.origin, "");
+  }
+
+  function render(url) {
+    console.log("render:", url);
+    let match = router.route(url);
+    let title = document.title;
+    if (!match) {
+      NotFound(url);
+    } else {
+      let page = match.value;
+      title = page.name;
+      document.title = title;
+      page(match);
+    }
+    if (url !== currentUrl()) {
+      history.pushState(null, title, url);
+    }
+  }
+</script>
+</body>
+</html>
