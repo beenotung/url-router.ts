@@ -1,6 +1,6 @@
 {
   "name": "url-router.ts",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "General Purpose, Isomorphic url based router.",
   "keywords": [
     "router",
@@ -36,8 +36,7 @@
     "example",
     "dist"
   ],
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/chai": "^4.2.14",
     "@types/express": "^4.17.9",
