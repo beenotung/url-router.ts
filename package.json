@@ -37,7 +37,6 @@
     "dist"
   ],
   "dependencies": {
-    "@beenotung/tslib": "^16.40.0",
     "tslib": "^2.0.3"
   },
   "devDependencies": {
