@@ -37,9 +37,10 @@
     }
   },
   "files": [
+    "dist",
+    "bundle",
     "src",
-    "example",
-    "dist"
+    "example"
   ],
   "dependencies": {},
   "devDependencies": {
