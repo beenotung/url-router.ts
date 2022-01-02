@@ -1,6 +1,6 @@
 {
   "name": "url-router.ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "General Purpose, isomorphic url based router that works in node.js and browser without dependency",
   "keywords": [
     "router",
