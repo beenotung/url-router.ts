@@ -14,10 +14,10 @@ npm install url-router.ts
 ### Load from script in index.html
 ```html
 <!-- bundled 3.6K, gzipped 1.1K -->
-<script src="https://cdn.jsdelivr.net/npm/url-router.ts@0.3/bundle/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/url-router.ts@1.0.0/bundle/index.js"></script>
 
 <!-- minified 1.4K, gzipped 693B -->
-<script src="https://cdn.jsdelivr.net/npm/url-router.ts@0.3/bundle/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/url-router.ts@1.0.0/bundle/index.min.js"></script>
 ```
 
 ## Usage Example
