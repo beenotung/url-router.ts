@@ -2,7 +2,7 @@
 
 General Purpose, isomorphic url based router that works in node.js and browser without dependency.
 
-[![npm Package Version](https://img.shields.io/npm/v/url-router.ts.svg?maxAge=3600)](https://www.npmjs.com/package/url-router.ts)
+[![npm Package Version](https://img.shields.io/npm/v/url-router.ts.svg)](https://www.npmjs.com/package/url-router.ts)
 
 ## Installation
 
