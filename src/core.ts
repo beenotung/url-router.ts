@@ -44,6 +44,14 @@ export class Router<T> {
     next.parts[''] = value
   }
 
+  addDict(routes: { [url: string]: T }) {
+    const entries = Object.entries(routes)
+    for (let i = 0; i < entries.length; i++) {
+      const entry = entries[i]
+      this.add(entry[0], entry[1])
+    }
+  }
+
   // e.g. /search?client=firefox-b-d&q=url+with+hash+and+search+query#rhs
   route(url: string): RouteContext<T> | undefined {
     let path: string = url

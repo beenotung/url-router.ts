@@ -28,6 +28,15 @@ describe('router core TestSuit', () => {
     expect(get('/404')).undefined
   })
 
+  it('should add multiple routes in dictionary', function () {
+    router.addDict({
+      '/1': 'one',
+      '/2': 'two',
+    })
+    expect(get('/1')).equals('one')
+    expect(get('/2')).equals('two')
+  })
+
   it('should handle multiple level of direct match route', function () {
     router.add('/', 'home')
     router.add('/users', 'user list')
