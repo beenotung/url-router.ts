@@ -45,9 +45,7 @@ export class Router<T> {
   }
 
   addDict(routes: { [url: string]: T }) {
-    const entries = Object.entries(routes)
-    for (let i = 0; i < entries.length; i++) {
-      const entry = entries[i]
+    for (const entry of Object.entries(routes)) {
       this.add(entry[0], entry[1])
     }
   }
