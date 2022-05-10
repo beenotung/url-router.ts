@@ -37,11 +37,14 @@ export class Router<T> {
 
   add(url: string, value: T) {
     const parts = url.split('/')
-    let next = this.routes
-    for (const part of parts) {
-      next = getOrAddNextPart(next, part) as Routes<T>
+    const combinations = expandOptionalParams(parts)
+    for (const parts of combinations) {
+      let next = this.routes
+      for (const part of parts) {
+        next = getOrAddNextPart(next, part) as Routes<T>
+      }
+      next.parts[''] = value
     }
-    next.parts[''] = value
   }
 
   addDict(routes: { [url: string]: T }) {
@@ -154,4 +157,17 @@ function toParams(acc: ParamsAcc | null): Record<string, string> {
     acc = next
   }
   return params
+}
+
+function expandOptionalParams(parts: string[]): string[][] {
+  const combinations: string[][] = [parts]
+  for (let i = parts.length - 1; i >= 0; i--) {
+    let part = parts[i]
+    if (part.endsWith('?')) {
+      part = part.slice(0, part.length - 1)
+      combinations.forEach(parts => (parts[i] = part))
+      combinations.push(parts.slice(0, i))
+    }
+  }
+  return combinations
 }
