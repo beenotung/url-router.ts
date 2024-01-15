@@ -109,6 +109,16 @@ describe('router core TestSuit', () => {
     })
   })
 
+  it('should prioritize static route over dynamic route', function () {
+    router.add('/article/add', 'add page')
+    router.add('/article/:slug', 'detail page')
+    router.add('/article/submit', 'submit page')
+
+    expect(router.route('/article/add')!.value).equals('add page')
+    expect(router.route('/article/apple')!.value).equals('detail page')
+    expect(router.route('/article/submit')!.value).equals('submit page')
+  })
+
   it('should handle route with one optional params', function () {
     router.add('/about/:mode?', 'about page')
 
