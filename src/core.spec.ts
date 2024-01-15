@@ -112,13 +112,13 @@ describe('router core TestSuit', () => {
   it('should handle route with one optional params', function () {
     router.add('/about/:mode?', 'about page')
 
-    let route = router.route('/about/markdown')
+    let route = router.route('/about/markdown')!
     expect(route).not.undefined
     expect(route.value).equals('about page')
     expect(route.params).not.undefined
     expect(route.params.mode).equals('markdown')
 
-    route = router.route('/about')
+    route = router.route('/about')!
     expect(route).not.undefined
     expect(route.value).equals('about page')
     expect(route.params).not.undefined
@@ -128,28 +128,28 @@ describe('router core TestSuit', () => {
   it('should handle route with multiple optional params', function () {
     router.add('/articles/:year?/:month?/:day?', 'article list')
 
-    let route = router.route('/articles/2022/05/10')
+    let route = router.route('/articles/2022/05/10')!
     expect(route).not.undefined
     expect(route.value).equals('article list')
     expect(route.params.year).equals('2022')
     expect(route.params.month).equals('05')
     expect(route.params.day).equals('10')
 
-    route = router.route('/articles/2022/05')
+    route = router.route('/articles/2022/05')!
     expect(route).not.undefined
     expect(route.value).equals('article list')
     expect(route.params.year).equals('2022')
     expect(route.params.month).equals('05')
     expect(route.params.day).undefined
 
-    route = router.route('/articles/2022')
+    route = router.route('/articles/2022')!
     expect(route).not.undefined
     expect(route.value).equals('article list')
     expect(route.params.year).equals('2022')
     expect(route.params.month).undefined
     expect(route.params.day).undefined
 
-    route = router.route('/articles')
+    route = router.route('/articles')!
     expect(route).not.undefined
     expect(route.value).equals('article list')
     expect(route.params.year).undefined
