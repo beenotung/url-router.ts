@@ -116,7 +116,7 @@ function matchParts<T>(
     }
   | undefined {
   if (!partsAcc) {
-    if (!('' in routes.parts)) {
+    if (!routes.parts || !('' in routes.parts)) {
       return NotFound
     }
     return {
