@@ -10,7 +10,7 @@ cd src
 cat core.ts helpers.ts | sed 's/export //' > "../$dir/bundle.ts"
 
 cd "../$dir"
-tsc --target es3 bundle.ts
+tsc --target es3 --skipLibCheck bundle.ts
 
 echo ";var UrlRouter = (function(){
 " > index.js
