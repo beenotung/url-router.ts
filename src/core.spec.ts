@@ -67,6 +67,19 @@ describe('router core TestSuit', () => {
     expect(get('/profile/404')).not.undefined
   })
 
+  it('should not throw when path continues past a leaf route', function () {
+    router.add('/', 'home')
+    router.add('/login', 'login')
+    // bot probes — should result in 404, not throw errors
+    expect(get('///admin.php')).undefined
+    expect(get('/login//admin.php')).undefined
+    expect(get('//admin.php')).undefined
+    expect(get('/admin.php')).undefined
+    expect(get('/admin.php.')).undefined
+    expect(get('/admin.php/')).undefined
+    expect(get('/admin.php?')).undefined
+  })
+
   it('should handle single route with multiple params', function () {
     router.add('/users/:uid/friends/:fid', 'friend')
     let context = router.route('/users/123/friends/456')!

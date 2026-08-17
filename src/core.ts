@@ -96,7 +96,13 @@ function getOrAddNextPart<T>(routes: Routes<T>, part: string): Routes<T> | T {
     routes.params.arr.push([key, next])
     return next
   }
-  return routes.parts[part] || (routes.parts[part] = Routes())
+  const existing = routes.parts[part]
+  if (existing) {
+    if (isRoutes(existing)) {
+      return existing
+    }
+  }
+  return (routes.parts[part] = Routes())
 }
 
 type List<T> = [T, List<T> | null] | null
@@ -104,6 +110,15 @@ type List<T> = [T, List<T> | null] | null
 type ParamsAcc = List<[string, string]>
 
 type PartsAcc = List<string>
+
+function isRoutes<T>(node: Routes<T> | T): node is Routes<T> {
+  return (
+    typeof node === 'object' &&
+    node !== null &&
+    'parts' in node &&
+    'params' in node
+  )
+}
 
 function matchParts<T>(
   routes: Routes<T>,
@@ -125,13 +140,20 @@ function matchParts<T>(
     }
   }
   const [part, parts] = partsAcc
-  if (part in routes.parts) {
-    return matchParts(routes.parts[part] as Routes<T>, parts, paramsAcc)
+  if (routes.parts && part in routes.parts) {
+    const next = routes.parts[part]
+    if (!isRoutes(next)) {
+      return NotFound
+    }
+    return matchParts(next, parts, paramsAcc)
   }
 
   // apply deep-first search
   for (const [key, next] of routes.params.arr) {
-    const match = matchParts(next as Routes<T>, parts, [[key, part], paramsAcc])
+    if (!isRoutes(next)) {
+      continue
+    }
+    const match = matchParts(next, parts, [[key, part], paramsAcc])
     if (match) {
       return match // return first matched route
     }
